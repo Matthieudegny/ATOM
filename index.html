@@ -10,26 +10,24 @@
 </head>
 <body>
     <header>
-        <h1>NASA API</h1>
-        <div id="photo-day">
+
+        <div class="research-type" id="photo-day">
             <h2>Photo of the day</h2>
             <button id="search">
                 search
             </button>
         </div>
-        <div id="photos-range">
-            <label for="start">Start date:</label>
 
-            <input type="date" id="start" name="trip-start"
-                value=""
-                min="1995-06-16" max="">
+        <div class="research-type" id="photos-selected-date">
+            <label for="start">Select a date:</label>
+
+            <input type="date" id="date-selected" name="trip-start" value=""min="1995-06-16" max="">
 
             <button id="search-photo-range">
                 search
             </button>
 
         </div>
-        <input type="text" id="searchTerm" placeholder="Enter search term">
        
     </header>
 
