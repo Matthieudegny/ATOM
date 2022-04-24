@@ -1,9 +1,15 @@
+const app = {
+    test : "ok",
+    API_KEY : 'zyfjvcZ14V0Pyci44WYJv9G8yLAGTUEed2wQJI2C',
+    
+}
 
-const API_KEY = 'zyfjvcZ14V0Pyci44WYJv9G8yLAGTUEed2wQJI2C'
-const API_URL = `https://api.nasa.gov/planetary/apod?api_key=${API_KEY}`
+
+
+const API_URL = `https://api.nasa.gov/planetary/apod?api_key=${app.API_KEY}`
 
 // &date=2021-02-05
-
+console.log(app.test)
 //Add en event listener to the button that runs the function sendApiRequest when it is clicked
 const searchButton = document.querySelector("#search")
 const searchButtonRange = document.querySelector("#search-photo-range")
@@ -18,7 +24,8 @@ const dateSelected = document.querySelector("#date-selected")
 searchButton.addEventListener("click", () => {
     clearPage()
     sendApiRequest()
-    picture.scrollIntoView();
+    title.scrollIntoView({behavior:"smooth"});
+   
 })
 
 searchButtonRange.addEventListener("click", () => {
@@ -26,37 +33,44 @@ searchButtonRange.addEventListener("click", () => {
     picture.scrollIntoView();
     let date = dateSelected.value
     sendApiRequestRange(date)
+    
+    
 })
 
 async function sendApiRequest(){
-    let response = await fetch (API_URL)
-    console.log(response)
-    let data = await response.json()
-    console.log(data)
-    useApiData(data)
+    let response = await fetch (app.API_URL);
+    let data = await response.json();
+    useApiData(data);
+    setTimeout(centerPage,100);
+   
 }
 
 async function sendApiRequestRange(date){
-    console.log(date)
-    let response = await fetch (API_URL + `&date=${date}`)
-    console.log(response)
-    let data = await response.json()
-    console.log(data)
-    useApiData(data)
+    let response = await fetch (app.API_URL + `&date=${date}`);
+    let data = await response.json();
+    useApiData(data);
 }
 
 function useApiData(data) {
+    centerPage();
     title.innerHTML = data.title
     texte.innerHTML = data.explanation
-    picture.innerHTML = ` <img src="${data.url}" alt="">`  
+    picture.innerHTML = ` <img src="${data.url}" alt="">` 
+    if (picture){
+        setTimeout(centerPage,400);
+    }
 }
 
 function clearPage(){
+    centerPage();
     title.innerHTML = ""
     texte.innerHTML = ""
     picture.innerHTML = ""
 }
 
+function centerPage(){
+    title.scrollIntoView({behavior:"smooth",block:"start"});
+}
 
 let today = new Date();
 let dd = today.getDate();
@@ -73,3 +87,4 @@ if (mm < 10) {
     
 today = yyyy + '-' + mm + '-' + dd;
 dateSelected.setAttribute("value", today);
+dateSelected.setAttribute("max", today);
