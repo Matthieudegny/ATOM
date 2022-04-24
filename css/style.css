@@ -29,10 +29,20 @@ header{
 #title-img{
     font-size: 4vw;
     margin: 2%;
+    text-align: center;
 }
 #container-picture img{
     width: 70vw;
     max-height: 70vh;
+}
+.waiting-animation {
+    width: 70vw;
+    height: 70vh;
+    background: #000000;
+}
+h2{
+    font-size: 3vw;
+    padding-bottom: 2%;
 }
 #container-texte{
     margin-top: 3%;
