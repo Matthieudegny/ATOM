@@ -61,7 +61,6 @@ input{
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 80%;
     width: 100%;
 }
 #title-img{
@@ -73,11 +72,12 @@ input{
 /*set in relative to recieve the container-picture-img
 with JS*/
 #container-picture{
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
     width: 50vw;
-    height: 70vh;
+    height: 0vh;
 }
 #container-picture img{
     position: absolute;
@@ -86,15 +86,59 @@ with JS*/
     z-index: 10;
     opacity: 1;
 }
-
+#container-footer-page{
+    display: flex;
+    width: 100%;
+}
+#container-rocket{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    height: 7vw;
+    width: 100%;
+}
+#img-rocket{
+    display: none;
+    position: absolute;
+    width: 5vw;
+    height: 5vw;
+    background-image: url(/space-shuttle-solid.svg);
+    background-repeat: no-repeat;
+    background-size: 80%;
+    transform: rotate(-90deg);
+    background-position: center;
+    background-color: #033A92;
+    border-radius: 40px;
+    margin-bottom: 20px;
+}
+.animation-rocket{
+    animation: animationRocket forwards;
+    animation-duration: 2.3s;
+}
+@keyframes animationRocket {
+    0%{bottom:23px}
+    3%{bottom:17px}
+    6%{bottom:23px}
+    9%{bottom:17px}
+    12%{bottom:23px}
+    15%{bottom:17px}
+    18%{bottom: 23px;}
+    21%{bottom:17px}
+    24%{bottom: 23px;}
+    30%{bottom:250px}
+    100%{bottom:1700px} 
+}
 #container-texte{
     position: relative;
-    max-width: 100%;
+    width: 90%;
     height: 100%;
     font-size: 2vw;
-    padding: 4%;
+    margin-left: 3%;
+    margin-bottom: 3%;
+    line-height: 2.3vw;
 }
 h2{
     font-size: 3vw;
-    padding-bottom: 2%;
+    margin-top: 2%;
+    padding: 2%;
 }

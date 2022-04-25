@@ -7,6 +7,7 @@ const app = {
     texteContainor : document.querySelector("#container-texte"),
     title : document.querySelector("#title-img"),
     dateSelected : document.querySelector("#date-selected"),
+    rocket : document.getElementById("img-rocket"),
     
     /*lanch mains methods when the js file is load*/
     init: function () {
@@ -20,22 +21,21 @@ const app = {
         document.querySelector("#search").addEventListener("click", () => {
             /*clear the page in case already one request before*/
             app.clearPage()
-            /*set the containor to relative to recieve the picture(absolute) from the request
-            it is not set before, to let possibility at user to play with the background*/
-            app.containerPictureSetRelative()
             /*launch request*/
             app.requestActions.sendApiRequest()   
         });  
         /*listener for the selected photo*/
         document.querySelector("#search-date-selected").addEventListener("click", () => {
             app.clearPage()
-            app.containerPictureSetRelative()
             /*the value of the date selected in the input is saved*/
             let date = app.dateSelected.value
             /*launch request*/
             app.requestActions.sendApiRequestWithDate(date)  
         }); 
+        /*listner to go back at input selection after request is done*/
+        app.rocket.addEventListener("click", app.launchRocket)
     },
+    
     /*two differents requests for two differents results*/
     requestActions: {
         /*first request for the photo of the day*/
@@ -54,23 +54,28 @@ const app = {
     },
 
     useApiData:function(data) {
+        /*  title from data added*/
         app.title.innerHTML = data.title
-        app.picture.innerHTML = ` <img src="${data.url}" alt="">`
+        /*rocket added*/
+        app.rocket.style.display = "block"
+        /* img from data added*/
+        app.picture.innerHTML += ` <img src="${data.url}" alt="">`
         app.addH2()
+        /*explanation added*/
         app.texteContainor.innerHTML += `<p>${data.explanation}</p>`
         app.centerPage()
     },
 
     clearPage:function() {
+        document.getElementById("particles-js").style.backgroundImage="none"
+        document.getElementById("container-picture").style.height="70vh"
         app.title.innerHTML = ""
         app.texteContainor.innerHTML = ""
         app.picture.innerHTML = ""
+        /*reset setting of the rocket*/
+        app.reloadRocket()
     },
-
-    containerPictureSetRelative: function() {
-        app.picture.style.position = "relative"
-    },
-
+    
     centerPage:function() {
         app.title.scrollIntoView({behavior:"smooth",block:"start"});
     },
@@ -79,6 +84,19 @@ const app = {
         const h2 = document.createElement("h2");
         h2.innerText = "Explanations :"
         app.texteContainor.appendChild(h2)
+    },
+
+    launchRocket: function () {
+        app.rocket.classList.add("animation-rocket")
+        setTimeout(timeOut,1000);
+        function timeOut () {
+            document.getElementById("photo-day").scrollIntoView({behavior:"smooth",block:"start"})
+        }
+    },
+
+    reloadRocket: function () {
+        app.rocket.classList.remove("animation-rocket")
+        app.rocket.style.display = "none"
     },
     /*setting add to the input date:
     min date year 1995 (Nase API guidelines) in the css
@@ -104,6 +122,5 @@ const app = {
 
 // when the loading is finish i launch app.init
 document.addEventListener('DOMContentLoaded', app.init );
-
 
 
