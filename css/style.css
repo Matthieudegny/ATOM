@@ -1,22 +1,26 @@
-body{
+body{ 
     position: relative;
     background-color: black;
     color: aliceblue;
-    min-height: 100vh;
     font-size: 2vw;
-}
-.background{
+    min-height: 100vh;
+ } 
+/*background with partcles animation and logo NASA*/
+#particles-js{ 
     position: absolute;
     top: 0;
     left: 0;
-    height: 100%;
+    height: 99%;
     width: 100%;
-    z-index: 0;
-}
-.button{
-    z-index: 5;
-}
+    background-color: #090b1a; 
+    background-image: url("http://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/NASA_logo.svg/1237px-NASA_logo.svg.png"); 
+    background-repeat: no-repeat; 
+    background-size: 20%; 
+    background-position: 50% 30%; 
+} 
+/*header section*/
 header{
+    height: 20%;
     padding: 1%;
     display: flex;
     justify-content: space-evenly;
@@ -24,51 +28,73 @@ header{
     background-color: transparent;
 }
 .research-type{
+    position: relative;
     height: 10vh;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-between;  
 }
-
+.button{
+    font-size: 0.8vw;
+    width: 80px;
+    margin: 0 auto;
+    border: none;
+    border-radius: 3px;
+    margin-top: 2%;
+}
+input{
+    background-color: #033A92;
+    color: rgb(241, 240, 255);
+    text-align: center;
+    font-size: 1vw;
+    border: none;
+    border-radius: 5px;
+}
+::-webkit-calendar-picker-indicator{
+    background-color: #FC3A1B;
+    padding: 5px;
+    color: aliceblue;
+}
+/*main section*/
 #main{
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100%;
+    height: 80%;
     width: 100%;
 }
 #title-img{
+    position: relative;
     font-size: 4vw;
     margin: 2%;
     text-align: center;
 }
+/*set in relative to recieve the container-picture-img
+with JS*/
 #container-picture{
-    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 70vw;
+    width: 50vw;
     height: 70vh;
 }
 #container-picture img{
     position: absolute;
     height: 100%;
-    width: 80%;
+    width: 100%;
     z-index: 10;
     opacity: 1;
 }
-.waiting-animation {
-    width: 70vw;
-    height: 70vh;
-    background: #000000;
+
+#container-texte{
+    position: relative;
+    max-width: 100%;
+    height: 100%;
+    font-size: 2vw;
+    padding: 4%;
 }
 h2{
     font-size: 3vw;
     padding-bottom: 2%;
-}
-#container-texte{
-    margin-top: 3%;
-    font-size: 2vw;
-    padding: 2%;
 }
