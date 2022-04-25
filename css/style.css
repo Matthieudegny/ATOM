@@ -16,8 +16,15 @@ body{
     background-image: url("http://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/NASA_logo.svg/1237px-NASA_logo.svg.png"); 
     background-repeat: no-repeat; 
     background-size: 20%; 
-    background-position: 50% 30%; 
+    background-position: 50% 50%;   
 } 
+/*z-indexs superior (=2 for all the elemnts) against the background particles
+so the background particles stay available for the user
+and against the rocket
+so the rocket pass below the text and the picture*/
+.z-index{
+    z-index: 2;
+}
 /*header section*/
 header{
     height: 20%;
@@ -28,19 +35,11 @@ header{
     background-color: transparent;
 }
 .research-type{
-    position: relative;
-    height: 10vh;
+    height: 12vh;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;  
-}
-.button{
-    font-size: 0.8vw;
-    width: 80px;
-    margin: 0 auto;
-    border: none;
-    border-radius: 3px;
-    margin-top: 2%;
+    justify-content: space-between;
+    align-items: center; 
 }
 input{
     background-color: #033A92;
@@ -49,11 +48,28 @@ input{
     font-size: 1vw;
     border: none;
     border-radius: 5px;
+    width: 200px;
 }
 ::-webkit-calendar-picker-indicator{
     background-color: #FC3A1B;
     padding: 5px;
     color: aliceblue;
+}
+#date-today::-webkit-calendar-picker-indicator{
+    pointer-events: none;
+    background: transparent;
+}
+#date-today{
+    padding-left: 10%;
+}
+.button{
+    font-size: 0.8vw;
+    font-weight: bold;
+    width: 80px;
+    margin: 0 auto;
+    border: none;
+    border-radius: 3px;
+    margin-top: 2%;
 }
 /*main section*/
 #main{
@@ -63,14 +79,13 @@ input{
     justify-content: center;
     width: 100%;
 }
+/*picture part*/
 #title-img{
-    position: relative;
     font-size: 4vw;
     margin: 2%;
+    padding-top: 2%;
     text-align: center;
 }
-/*set in relative to recieve the container-picture-img
-with JS*/
 #container-picture{
     position: relative;
     display: flex;
@@ -86,10 +101,26 @@ with JS*/
     z-index: 10;
     opacity: 1;
 }
-#container-footer-page{
-    display: flex;
-    width: 100%;
+/*explanation part*/
+#container-texte{
+    width: 90%;
+    height: 100%;
+    font-size: 2vw;
+    margin-left: 3%;
+    margin-bottom: 3%;
+    line-height: 2.3vw;
 }
+h2{
+    font-size: 3vw;
+    margin-top: 1%;
+    padding: 2%;
+}
+
+/*rocket*/
+/*the img rocket must be absolute to be clicked (relative causes problem with the
+absolute background particles);
+so a relative container is made to contain the absolute rocket and let it
+fill its mission*/
 #container-rocket{
     position: relative;
     display: flex;
@@ -100,6 +131,7 @@ with JS*/
 #img-rocket{
     display: none;
     position: absolute;
+    z-index: 1;
     width: 5vw;
     height: 5vw;
     background-image: url(/space-shuttle-solid.svg);
@@ -111,6 +143,7 @@ with JS*/
     border-radius: 40px;
     margin-bottom: 20px;
 }
+/*this animation is added to the rocket element with js*/
 .animation-rocket{
     animation: animationRocket forwards;
     animation-duration: 2.3s;
@@ -126,19 +159,5 @@ with JS*/
     21%{bottom:17px}
     24%{bottom: 23px;}
     30%{bottom:250px}
-    100%{bottom:1700px} 
-}
-#container-texte{
-    position: relative;
-    width: 90%;
-    height: 100%;
-    font-size: 2vw;
-    margin-left: 3%;
-    margin-bottom: 3%;
-    line-height: 2.3vw;
-}
-h2{
-    font-size: 3vw;
-    margin-top: 2%;
-    padding: 2%;
+    100%{bottom:1800px} 
 }

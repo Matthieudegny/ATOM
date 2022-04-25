@@ -15,7 +15,7 @@ const app = {
         app.addListenerToActions();
     },
 
-    /*two listeners for two differents actions*/ 
+    /*every listeners in one method*/ 
     addListenerToActions: function () {
         /*listener for the photo of the day*/
         document.querySelector("#search").addEventListener("click", () => {
@@ -29,7 +29,7 @@ const app = {
             app.clearPage()
             /*the value of the date selected in the input is saved*/
             let date = app.dateSelected.value
-            /*launch request*/
+            /*launch request with the date as callback*/
             app.requestActions.sendApiRequestWithDate(date)  
         }); 
         /*listner to go back at input selection after request is done*/
@@ -53,6 +53,7 @@ const app = {
         }
     },
 
+    /*creation of the article*/
     useApiData:function(data) {
         /*  title from data added*/
         app.title.innerHTML = data.title
@@ -67,7 +68,11 @@ const app = {
     },
 
     clearPage:function() {
+        /*remove the NASA logo when the first request is done*/
         document.getElementById("particles-js").style.backgroundImage="none"
+        /*creation of a container to receive the picture, indeed the container 
+        make the method centerPage works in case the request (for the picture) take some time to load
+        and make lagg the scroll*/
         document.getElementById("container-picture").style.height="70vh"
         app.title.innerHTML = ""
         app.texteContainor.innerHTML = ""
@@ -77,6 +82,7 @@ const app = {
     },
     
     centerPage:function() {
+        /*when the request is done a scroll to the title is done*/
         app.title.scrollIntoView({behavior:"smooth",block:"start"});
     },
 
@@ -100,6 +106,7 @@ const app = {
     },
     /*setting add to the input date:
     min date year 1995 (Nase API guidelines) in the css
+    max date setted at today
     and the value of the day as placeholder is added*/
     modificationValuesInputDate:function() {
         let today = new Date();
@@ -108,14 +115,13 @@ const app = {
         let yyyy = today.getFullYear();
 
         if (dd < 10) {
-            dd = '0' + dd;
-        }
+            dd = '0' + dd;}
          
-         if (mm < 10) {
-            mm = '0' + mm;
-        } 
+        if (mm < 10) {
+            mm = '0' + mm;} 
+
         today = yyyy + '-' + mm + '-' + dd;
-        app.dateSelected.setAttribute("value", today);
+        document.getElementById("date-today").setAttribute("value", today);
         app.dateSelected.setAttribute("max", today);
     }
 }

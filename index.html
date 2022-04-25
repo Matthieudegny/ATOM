@@ -9,28 +9,22 @@
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-
-    <div id="particles-js"></div>
-
     <header>
-        <div class="research-type" id="photo-day">
+        <div class="research-type z-index" id="photo-day">
+            <h3>Photo of the day:</h3>
 
-            <h3>Photo of the day</h3>
+            <input type="date" id="date-today" name="trip-start" value="">
 
-            <button class="button" id="search">
-                search
-            </button>
+            <button class="button" id="search">SEARCH</button>
 
         </div>
 
-        <div class="research-type" id="photos-selected-date">
-            <h3>Select a date</h3>
+        <div class="research-type z-index" id="photos-selected-date">
+            <h3>Select a date:</h3>
 
             <input type="date" id="date-selected" name="trip-start" value=""min="1995-06-16" max="">
 
-            <button class="button" id="search-date-selected">
-                search
-            </button>
+            <button class="button" id="search-date-selected">SEARCH</button>
 
         </div>
         
@@ -38,25 +32,25 @@
 
     <div id="main">
 
-        <div id="title-img"></div>
+        <div id="title-img" class="z-index"></div>
 
         <div id="container-picture"></div>
 
+        <div id="container-texte" class="z-index">
+            <p id="texte-explanation" class="z-index"></p>
+        </div> 
         
-        <div id="container-texte">
-            <p id="texte-explanation"></p>
-        </div>   
-       
-    
+        <div id="container-rocket">
+            <div id="img-rocket"></div> 
+        </div>
+
     <div>
-    
-    <div id="container-rocket">
-        <div id="img-rocket"></div>  
-    </div>
-    
-    
 
-
+     
+    
+   
+    
+    <div id="particles-js"></div>
 
     <script src="http://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script> 
     <script src="http://threejs.org/examples/js/libs/stats.min.js"></script>
