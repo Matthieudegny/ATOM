@@ -42,14 +42,22 @@ const app = {
         sendApiRequest: async function () {
             let response = await fetch (API_URL);
             let data = await response.json();
-            app.useApiData(data);   
+            if(data){app.useApiData(data) 
+                console.log(data);}
+            
+            else{
+                app.problemWithRequest()
+                console.log("problem with request")} 
         },
         /*second request is the same than the first one with a request date added,
         the date is receive with the call back from the listener*/
         sendApiRequestWithDate: async function (date){
             let response = await fetch (API_URL + `&date=${date}`);
             let data = await response.json();
-            app.useApiData(data);
+            if(data)app.useApiData(data);
+            else{
+                app.problemWithRequest()
+                console.log("problem with request")}
         }
     },
 
@@ -80,6 +88,17 @@ const app = {
         /*reset setting of the rocket*/
         app.reloadRocket()
     },
+
+    problemWithRequest:function(){
+        app.title.innerHTML = "There is someone?"
+        app.rocket.style.display = "block"
+        /* img from data added*/
+        app.picture.innerHTML += ` <img src="/houston.jpg" alt="photo astronaut">`
+        app.addH2()
+        /*explanation added*/
+        app.texteContainor.innerHTML += `<p>This photo seem to be unavailable, please select an other photo.</p>`
+        app.centerPage()
+    },
     
     centerPage:function() {
         /*when the request is done a scroll to the title is done*/
@@ -94,13 +113,19 @@ const app = {
 
     launchRocket: function () {
         app.rocket.classList.add("animation-rocket")
+        /*after rockect is launched the screen go back to the form at the top of the page*/
         setTimeout(timeOut,1000);
         function timeOut () {
             document.getElementById("photo-day").scrollIntoView({behavior:"smooth",block:"start"})
         }
+        setTimeout(rocketDisappear,2300)
+        function rocketDisappear () {
+            app.rocket.style.opacity = "0"
+        }
     },
 
     reloadRocket: function () {
+        app.rocket.style.opacity = "1"
         app.rocket.classList.remove("animation-rocket")
         app.rocket.style.display = "none"
     },
