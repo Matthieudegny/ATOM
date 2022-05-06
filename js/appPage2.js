@@ -30,6 +30,7 @@ const app2 = {
             let data = await response.json();
             if(data){
                 console.log(data)
+                if(data.collection.items.length === 0) app2.problemRequest()
                 app2.useAPIdata2(data);}
             
             else{
@@ -38,29 +39,44 @@ const app2 = {
     },
 
     useAPIdata2:function (data) {
-        for(let i = 0; i < 10; i++){
+        for(let i = 0; i < 15; i++){
 
             fetch(data.collection.items[i].href)
             .then(res=>{
                 if(res.ok){
-                res.json().then(data=>{
-                    for(let image of data){ 
-                    if(image.includes("small")) {
-                        let newDiv = document.createElement("div");
-                        newDiv.classList.add("images")
-                        console.log(image)
-                        newDiv.innerHTML = `<img src="${image}" alt="">`
-                        document.getElementById("container-pictures").appendChild(newDiv)
-                    }
-                    }
-                })
-            }
-        })
+        
+                    res.json().then(data=>{
+                        
+                        for(let image of data){ 
+                            if(image.includes("small")) {
+                                let newImage = document.createElement("div");
+                                let newContainerPicture = document.createElement("div");
+                                newImage.classList.add("images");
+                                newContainerPicture.classList.add("container-one-picture");
+                                // newImage.innerHTML = `<img src="${image}" alt="">`
+                                newImage.style.backgroundImage = `url(${image})` 
+                                newContainerPicture.appendChild(newImage)
+                                document.getElementById("container-pictures").appendChild(newContainerPicture)
+                            }else{
+                                app2.problemRequest
+                            }
+
+                        }
+                    })
+                }else{
+                    console.log(error)
+                    app2.problemRequest
+                }
+            })
         }
     },
 
     clearContainerPictures: function() {
         app2.objects.containerPictures.innerHTML = ""
+    },
+
+    problemRequest: function () {
+        window.alert("please write something else")
     }
 }
 
