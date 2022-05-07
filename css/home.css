@@ -1,0 +1,85 @@
+body{
+    height: 100vh;
+    width: 100%;
+    background-image: url(/atom.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    font-family: 'Orbitron', sans-serif; 
+}
+h1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 15vh;
+    font-size: 5vw;
+    color: aliceblue;
+    font-family: 'Orbitron', sans-serif;
+}
+#container-h4{
+    height: 40vh;
+    display: flex;
+}
+section{
+    width: 50vw;
+    text-align: justify;
+    margin: 3.5%;
+}
+h2{
+    color: aliceblue;
+    font-size: 1.75vw;
+    font-family: 'Orbitron', sans-serif;
+}
+h4{
+    color: aliceblue;
+    font-weight: bold;
+    font-size: 1.5vw;
+    font-family: 'Roboto', sans-serif;
+}
+#h4-right{
+    display: flex;
+    align-items: flex-end;
+}
+#research-links-container{
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+    height: 30vh;
+    color: azure;
+}
+.research-links{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.fa-globe{
+    font-size: 5vw;
+    cursor: pointer;
+    background-color: linear-gradient(
+        45deg,
+        hsl(217deg 96% 29%) 21%,
+        hsl(230deg 23% 76%) 98%,
+        hsl(0deg 0% 100%) 100%)
+    /* animation: animation-globes 3s infinite; */
+}
+h3{
+    font-size: 1.5vw;
+}
+footer{
+    height: 15vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.animation-globes{
+   
+}
+@keyframes animation-globes {
+    0%{color: linear-gradient(
+        45deg,
+        hsl(217deg 96% 29%) 21%,
+        hsl(230deg 23% 76%) 98%,
+        hsl(0deg 0% 100%) 100%
+      );}
+    100%{color: red;}
+}
