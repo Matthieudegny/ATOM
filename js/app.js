@@ -42,10 +42,11 @@ const app = {
         sendApiRequest: async function () {
             let response = await fetch (API_URL);
             let data = await response.json();
-            if(data){app.useApiData(data) 
-                console.log(data);}
-            
-            else{
+            if(data){
+                app.deleteAnimationParticles();
+                app.useApiData(data) 
+               
+            }else{
                 app.problemWithRequest()
                 console.log("problem with request")} 
         },
@@ -54,8 +55,11 @@ const app = {
         sendApiRequestWithDate: async function (date){
             let response = await fetch (API_URL + `&date=${date}`);
             let data = await response.json();
-            if(data)app.useApiData(data);
-            else{
+            if(data){
+                app.deleteAnimationParticles();
+                app.useApiData(data);
+                
+            }else{
                 app.problemWithRequest()
                 console.log("problem with request")}
         }
@@ -75,9 +79,15 @@ const app = {
         app.centerPage()
     },
 
+    deleteAnimationParticles: function(){
+        //setting off animation particles
+        document.getElementById("particles-js").style.height = "0%"
+        /*remove the NASA logo when the request is done*/
+        document.getElementById("particles-js").style.backgroundSize = "0%"
+        document.getElementById("particles-js").classList.remove("addLogoNasa")
+    },
+
     clearPage:function() {
-        /*remove the NASA logo when the first request is done*/
-        document.getElementById("particles-js").style.backgroundImage="none"
         /*creation of a container to receive the picture, indeed the container 
         make the method centerPage works in case the request (for the picture) take some time to load
         and make lagg the scroll*/
@@ -121,6 +131,12 @@ const app = {
         setTimeout(rocketDisappear,2300)
         function rocketDisappear () {
             app.rocket.style.opacity = "0"
+            app.clearPage()
+            //Reload animation particles + logo nasa 
+            //setting on animation particles
+            document.getElementById("particles-js").style.height = "100%"
+            /*put back the NASA logo */
+            document.getElementById("particles-js").classList.add("addLogoNasa")
         }
     },
 

@@ -1,6 +1,6 @@
 body{ 
     position: relative;
-    background-color: black;
+    background-color: #090B1A;
     color: aliceblue;
     font-size: 2vw;
     min-height: 100vh;
@@ -18,6 +18,13 @@ body{
     background-size: 20%; 
     background-position: 50% 50%;   
 } 
+.addLogoNasa{
+    animation: addLogoNasa 1s 0.5s forwards;
+}
+@keyframes addLogoNasa {
+    from{background-size: 0%;}
+    to{background-size: 20%;}
+}
 /*z-indexs superior (=2 for all the elemnts) against the background particles
 so the background particles stay available for the user
 and against the rocket

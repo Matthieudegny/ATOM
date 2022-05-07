@@ -3,7 +3,8 @@ const app2 = {
     objects:{
         result : document.getElementById("inputResearch"),
         button : document.getElementById("button"),
-        containerPictures : document.getElementById("container-pictures")
+        containerPictures : document.getElementById("container-pictures"),
+        rocket : document.getElementById("img-rocket")
     },
 
     init:function () {
@@ -22,6 +23,9 @@ const app2 = {
             const API =`https://images-api.nasa.gov/search?q=${result}&media_type=image`
             app2.requestAction2.sendApiRequestInput(API)
         })
+
+         /*listner to go back at input selection after request is done*/
+         app2.objects.rocket.addEventListener("click", app2.launchRocket)
     },
 
     requestAction2:{
@@ -73,11 +77,25 @@ const app2 = {
 
     clearContainerPictures: function() {
         app2.objects.containerPictures.innerHTML = ""
+        document.getElementById("particles-js").style.backgroundImage="none"
     },
 
     problemRequest: function () {
         window.alert("please write something else")
-    }
+    },
+
+    launchRocket: function () {
+        app2.objects.rocket.classList.add("animation-rocket")
+        /*after rockect is launched the screen go back to the form at the top of the page*/
+        setTimeout(timeOut,1000);
+        function timeOut () {
+            document.getElementById("inputResearch").scrollIntoView({behavior:"smooth",block:"start"})
+        }
+        setTimeout(rocketDisappear,2300)
+        function rocketDisappear () {
+            app2.objects.rocket.style.opacity = "0"
+        }
+    },
 }
 
 // when the loading is finish i launch app.init
