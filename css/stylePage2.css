@@ -19,6 +19,13 @@ body{
     background-size: 20%; 
     background-position: 51% 50%;   
 } 
+.addLogoNasa{
+    animation: addLogoNasa 1s 0.5s forwards;
+}
+@keyframes addLogoNasa {
+    from{background-size: 0%;}
+    to{background-size: 20%;}
+}
 .z-index{
     z-index: 2;
 }
@@ -64,7 +71,7 @@ input{
     border-radius: 5px;
 }
 #img-rocket{
-    /* display: none; */
+    display: none;
     position: absolute;
     z-index: 1;
     bottom: 0;

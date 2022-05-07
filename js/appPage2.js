@@ -34,8 +34,12 @@ const app2 = {
             let data = await response.json();
             if(data){
                 console.log(data)
-                if(data.collection.items.length === 0) app2.problemRequest()
-                app2.useAPIdata2(data);}
+                    if(data.collection.items.length === 0) app2.problemRequest()
+                    else{
+                        app2.deleteAnimationParticles();
+                        app2.useAPIdata2(data);
+                        }
+                    }
             
             else{
                 console.log("problem with request")} 
@@ -61,6 +65,7 @@ const app2 = {
                                 newImage.style.backgroundImage = `url(${image})` 
                                 newContainerPicture.appendChild(newImage)
                                 document.getElementById("container-pictures").appendChild(newContainerPicture)
+                                app2.objects.rocket.style.display = "block";
                             }else{
                                 app2.problemRequest
                             }
@@ -75,27 +80,54 @@ const app2 = {
         }
     },
 
+    //commun
+    deleteAnimationParticles: function(){
+        //setting off animation particles
+        document.getElementById("particles-js").style.height = "0%"
+        /*remove the NASA logo when the request is done*/
+        document.getElementById("particles-js").style.backgroundSize = "0%"
+        document.getElementById("particles-js").classList.remove("addLogoNasa")
+    },
+
     clearContainerPictures: function() {
         app2.objects.containerPictures.innerHTML = ""
-        document.getElementById("particles-js").style.backgroundImage="none"
     },
 
     problemRequest: function () {
         window.alert("please write something else")
     },
 
+    //commun
     launchRocket: function () {
         app2.objects.rocket.classList.add("animation-rocket")
         /*after rockect is launched the screen go back to the form at the top of the page*/
         setTimeout(timeOut,1000);
         function timeOut () {
-            document.getElementById("inputResearch").scrollIntoView({behavior:"smooth",block:"start"})
+            document.getElementById("particles-js").scrollIntoView({behavior:"smooth",block:"start"})
         }
         setTimeout(rocketDisappear,2300)
         function rocketDisappear () {
             app2.objects.rocket.style.opacity = "0"
+            app2.clearPage2()
+            //Reload animation particles + logo nasa 
+            //setting on animation particles
+            document.getElementById("particles-js").style.height = "100%"
+            /*put back the NASA logo */
+            document.getElementById("particles-js").classList.add("addLogoNasa")
+            console.log("ok")
         }
     },
+
+    reloadRocket: function () {
+        app2.objects.rocket.style.opacity = "1"
+        app2.objects.rocket.classList.remove("animation-rocket")
+        app2.objects.rocket.style.display = "none"
+    },
+
+    clearPage2: function(){
+        document.getElementById("container-pictures").innerHTML = "";
+        app2.reloadRocket()
+    }
 }
 
 // when the loading is finish i launch app.init
