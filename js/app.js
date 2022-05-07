@@ -43,7 +43,7 @@ const app = {
             let response = await fetch (API_URL);
             let data = await response.json();
             if(data){
-                app.deleteAnimationParticles();
+                apps.deleteAnimationParticles();
                 app.useApiData(data) 
                
             }else{
@@ -56,7 +56,7 @@ const app = {
             let response = await fetch (API_URL + `&date=${date}`);
             let data = await response.json();
             if(data){
-                app.deleteAnimationParticles();
+                apps.deleteAnimationParticles();
                 app.useApiData(data);
                 
             }else{
@@ -79,14 +79,6 @@ const app = {
         app.centerPage()
     },
 
-    deleteAnimationParticles: function(){
-        //setting off animation particles
-        document.getElementById("particles-js").style.height = "0%"
-        /*remove the NASA logo when the request is done*/
-        document.getElementById("particles-js").style.backgroundSize = "0%"
-        document.getElementById("particles-js").classList.remove("addLogoNasa")
-    },
-
     clearPage:function() {
         /*creation of a container to receive the picture, indeed the container 
         make the method centerPage works in case the request (for the picture) take some time to load
@@ -96,7 +88,7 @@ const app = {
         app.texteContainor.innerHTML = ""
         app.picture.innerHTML = ""
         /*reset setting of the rocket*/
-        app.reloadRocket()
+        apps.reloadRocket()
     },
 
     problemWithRequest:function(){
@@ -128,8 +120,8 @@ const app = {
         function timeOut () {
             document.getElementById("photo-day").scrollIntoView({behavior:"smooth",block:"start"})
         }
-        setTimeout(rocketDisappear,2300)
-        function rocketDisappear () {
+        setTimeout(reloadPage,2300)
+        function reloadPage () {
             app.rocket.style.opacity = "0"
             app.clearPage()
             //Reload animation particles + logo nasa 
@@ -140,11 +132,6 @@ const app = {
         }
     },
 
-    reloadRocket: function () {
-        app.rocket.style.opacity = "1"
-        app.rocket.classList.remove("animation-rocket")
-        app.rocket.style.display = "none"
-    },
     /*setting add to the input date:
     min date year 1995 (Nase API guidelines) in the css
     max date setted at today

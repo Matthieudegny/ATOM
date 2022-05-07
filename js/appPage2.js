@@ -36,7 +36,7 @@ const app2 = {
                 console.log(data)
                     if(data.collection.items.length === 0) app2.problemRequest()
                     else{
-                        app2.deleteAnimationParticles();
+                        apps.deleteAnimationParticles();
                         app2.useAPIdata2(data);
                         }
                     }
@@ -80,15 +80,6 @@ const app2 = {
         }
     },
 
-    //commun
-    deleteAnimationParticles: function(){
-        //setting off animation particles
-        document.getElementById("particles-js").style.height = "0%"
-        /*remove the NASA logo when the request is done*/
-        document.getElementById("particles-js").style.backgroundSize = "0%"
-        document.getElementById("particles-js").classList.remove("addLogoNasa")
-    },
-
     clearContainerPictures: function() {
         app2.objects.containerPictures.innerHTML = ""
     },
@@ -97,7 +88,6 @@ const app2 = {
         window.alert("please write something else")
     },
 
-    //commun
     launchRocket: function () {
         app2.objects.rocket.classList.add("animation-rocket")
         /*after rockect is launched the screen go back to the form at the top of the page*/
@@ -132,42 +122,3 @@ const app2 = {
 
 // when the loading is finish i launch app.init
 document.addEventListener('DOMContentLoaded', app2.init );
-
-// button.addEventListener("click", () => {
-//    const researchToDo = result.value
-//    const API =`https://images-api.nasa.gov/search?q=sun&media_type=image`
-   
-   
-// .then(res=>res.json())
-// .then(data => console.log(data))
-
-// .then(res => {
-//     if(res.ok){
-//         res.json().then(data=> {
-            
-            
-//             for(let i = 0; i < 10; i++){
-
-//                 fetch(data.collection.items[i].href)
-//                 .then(res=>{
-//                     if(res.ok){
-//                     res.json().then(data=>{
-//                         for(let image of data){ //{console.log(image)}
-//                         if(image.includes("small")) {
-//                             let newDiv = document.createElement("div");
-//                             newDiv.classList.add("images")
-//                             newDiv.innerHTML = `<img src="${image}" alt="">`
-//                             document.getElementById("body").appendChild(newDiv)
-//                         }
-//                         }
-//                         console.log("espace")
-//                     })
-//                 }
-//             })
-//             }
-
-            
-           
-//         })
-//     }
-// })

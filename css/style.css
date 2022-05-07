@@ -1,40 +1,6 @@
-body{ 
-    position: relative;
-    background-color: #090B1A;
-    color: aliceblue;
-    font-size: 2vw;
-    min-height: 100vh;
- } 
-/*background with partcles animation and logo NASA*/
-#particles-js{ 
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    background-color: #090b1a; 
-    background-image: url("http://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/NASA_logo.svg/1237px-NASA_logo.svg.png"); 
-    background-repeat: no-repeat; 
-    background-size: 20%; 
-    background-position: 50% 50%;   
-} 
-.addLogoNasa{
-    animation: addLogoNasa 1s 0.5s forwards;
-}
-@keyframes addLogoNasa {
-    from{background-size: 0%;}
-    to{background-size: 20%;}
-}
-/*z-indexs superior (=2 for all the elemnts) against the background particles
-so the background particles stay available for the user
-and against the rocket
-so the rocket pass below the text and the picture*/
-.z-index{
-    z-index: 2;
-}
 /*header section*/
 header{
-    height: 20%;
+    height: 12vh;
     padding: 1%;
     display: flex;
     justify-content: space-evenly;
@@ -127,36 +93,6 @@ h2{
     margin-top: 1%;
     padding: 2%;
 }
-
-/*rocket*/
-/*the img rocket must be absolute to be clicked (relative causes problem with the
-absolute background particles);
-so a relative container is made to contain the absolute rocket and let it
-fill its mission*/
-#container-rocket{
-    position: relative;
-    display: flex;
-    justify-content: center;
-    height: 7vw;
-    width: 100%;
-}
-#img-rocket{
-    display: none;
-    position: absolute;
-    z-index: 1;
-    width: 5vw;
-    height: 5vw;
-    background-image: url(/space-shuttle-solid.svg);
-    background-repeat: no-repeat;
-    background-size: 80%;
-    transform: rotate(-90deg);
-    background-position: center;
-    background-color: #033A92;
-    border-radius: 40px;
-    margin-bottom: 20px;
-    cursor:pointer;
-}
-/*this animation is added to the rocket element with js*/
 .animation-rocket{
     animation: animationRocket forwards;
     animation-duration: 2.3s;
@@ -172,5 +108,7 @@ fill its mission*/
     21%{bottom:17px}
     24%{bottom: 23px;}
     30%{bottom:250px}
-    100%{bottom:1800px;} 
+    100%{bottom:1800px} 
 }
+
+
