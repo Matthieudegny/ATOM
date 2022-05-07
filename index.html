@@ -5,23 +5,28 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ATOM</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron&family=Roboto:wght@100&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/reset.css">
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
     <header>
+
+        <i class="fa-solid fa-globe"></i>
+     
         <div class="research-type z-index" id="photo-day">
-            <h3>Photo of the day:</h3>
+            <h3>Photo of the day :</h3>
 
             <input type="date" id="date-today" name="trip-start" value="">
 
             <button class="button" id="search">SEARCH</button>
-
         </div>
 
         <div class="research-type z-index" id="photos-selected-date">
-            <h3>Select a date:</h3>
+            <h3>Select a date :</h3>
 
             <input type="date" id="date-selected" name="trip-start" value=""min="1995-06-16" max="">
 
@@ -45,19 +50,13 @@
             <div id="img-rocket" class="z-index"></div> 
         </div>
 
-       
-
     <div>
 
-     
-    
-   
-    
     <div id="particles-js"></div>
 
+    <script src="https://kit.fontawesome.com/7bc965e491.js" crossorigin="anonymous"></script>
     <script src="http://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script> 
     <script src="http://threejs.org/examples/js/libs/stats.min.js"></script>
-   
     <script src="/js/app.js"></script>
     <script src="/js/apps.js"></script>
     <script src="/js/particles.js"></script>

@@ -101,7 +101,7 @@ const app2 = {
             app2.clearPage2()
             //Reload animation particles + logo nasa 
             //setting on animation particles
-            document.getElementById("particles-js").style.height = "100%"
+            document.getElementById("particles-js").style.height = "98%"
             /*put back the NASA logo */
             document.getElementById("particles-js").classList.add("addLogoNasa")
             console.log("ok")

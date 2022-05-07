@@ -43,9 +43,7 @@ const app = {
             let response = await fetch (API_URL);
             let data = await response.json();
             if(data){
-                apps.deleteAnimationParticles();
                 app.useApiData(data) 
-               
             }else{
                 app.problemWithRequest()
                 console.log("problem with request")} 
@@ -56,9 +54,7 @@ const app = {
             let response = await fetch (API_URL + `&date=${date}`);
             let data = await response.json();
             if(data){
-                apps.deleteAnimationParticles();
                 app.useApiData(data);
-                
             }else{
                 app.problemWithRequest()
                 console.log("problem with request")}
@@ -83,12 +79,13 @@ const app = {
         /*creation of a container to receive the picture, indeed the container 
         make the method centerPage works in case the request (for the picture) take some time to load
         and make lagg the scroll*/
-        document.getElementById("container-picture").style.height="70vh"
+        app.picture.style.height="70vh"
         app.title.innerHTML = ""
         app.texteContainor.innerHTML = ""
         app.picture.innerHTML = ""
         /*reset setting of the rocket*/
         apps.reloadRocket()
+        apps.deleteAnimationParticles();
     },
 
     problemWithRequest:function(){
@@ -126,9 +123,10 @@ const app = {
             app.clearPage()
             //Reload animation particles + logo nasa 
             //setting on animation particles
-            document.getElementById("particles-js").style.height = "100%"
+            document.getElementById("particles-js").style.height = "99%"
             /*put back the NASA logo */
             document.getElementById("particles-js").classList.add("addLogoNasa")
+            app.picture.style.height="0vh"
         }
     },
 

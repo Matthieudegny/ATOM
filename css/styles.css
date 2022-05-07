@@ -1,16 +1,20 @@
+*{
+    font-family: 'Orbitron', sans-serif;
+}
 body{ 
     position: relative;
-    background-color: black;
+    background-color: #090b1a; 
     color: aliceblue;
     font-size: 2vw;
     min-height: 100vh;
+    font-family: 'Orbitron', sans-serif;
  } 
 #particles-js{ 
     position: absolute;
     top: 0;
     bottom: 0;
     left: 0;
-    height: 100%;
+    height: 99%;
     width: 100%;
     background-color: #090b1a; 
     background-image: url("http://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/NASA_logo.svg/1237px-NASA_logo.svg.png"); 
@@ -18,6 +22,14 @@ body{
     background-size: 20%; 
     background-position: 51% 50%;   
 } 
+.fa-globe{
+    position: absolute;
+    z-index: 3;
+    left: 5%;
+    bottom: 40%;
+    font-size: 3vw;
+    cursor: pointer;
+}
 .addLogoNasa{
     animation: addLogoNasa 1s 0.5s forwards;
 }

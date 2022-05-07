@@ -1,9 +1,13 @@
+body{
+    font-family: 'Orbitron', sans-serif;
+}
 header{
+    position: relative;
     width: 100%;
-    height: 12vh;
+    height: 15vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     padding-top: 2%;
 }
@@ -11,11 +15,18 @@ input{
     background-color: #033A92;
     color: rgb(241, 240, 255);
     text-align: center;
-    height: 4vh;
-    width: 50%;
-    font-size: 1vw;
+    width: 70%;
+    font-size: 1.7vw;
     border: none;
     border-radius: 4px;
+    padding: 1%;
+}
+#button{
+    font-size: 1.5vw;
+    padding: 0.2%;
+    border-radius: 5px;
+    color: #FC3A1B;
+    cursor:pointer;
 }
 #container-pictures{
     padding-bottom: 200px;
@@ -54,6 +65,6 @@ input{
     21%{bottom:17px}
     24%{bottom: 23px;}
     30%{bottom:250px}
-    100%{bottom:9900px} 
+    100%{bottom:10100px} 
 }
 
