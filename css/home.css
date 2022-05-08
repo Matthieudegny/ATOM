@@ -1,25 +1,23 @@
 body{
+    position: relative;
     height: 100vh;
     width: 100%;
     font-family: 'Orbitron', sans-serif; 
-    color: black;
-    background-image: linear-gradient(
-        120deg,
-        hsl(0deg 0% 100%) 0%,
-        rgb(255, 255, 255) 10%,
-        rgb(252, 251, 250) 19%,
-        rgb(223, 223, 219) 29%,
-        hsl(54deg 4% 63%) 39%,
-        hsl(54deg 4% 55%) 48%,
-        hsl(54deg 4% 63%) 58%,
-        rgb(228, 228, 226) 68%,
-        rgb(255, 255, 255) 78%,
-        rgb(255, 255, 253) 88%,
-        hsl(0deg 0% 100%) 100%
-      );
+    color: rgb(255, 254, 254);
 }
+#particles-js{ 
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    height: 99%;
+    width: 100%;
+    background-color: #000000; 
+} 
 main{
     display: flex;
+    position: relative;
+    z-index: 2;
 }
 /*section left*/
 #container-h1-image{
@@ -35,7 +33,7 @@ h1{
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 5vw;
+    font-size: 3.5vw;
     font-style: italic;
     margin-top: 10%;
     color: aliceblue;
@@ -51,7 +49,8 @@ h1{
     margin: 0 2%;
 }
 h2{
-    font-size: 2.5vw;
+    font-size: 1.7vw;
+    line-height: 2.3vw;
     text-align: center;
 }
 #research-links-container{
@@ -69,31 +68,28 @@ h2{
     position: relative;
     overflow: hidden;
     top: 0;
-    font-size: 7vw;
+    font-size: 5vw;
     cursor: pointer;   
-    animation: rotation 5s infinite;
-}
-@keyframes rotation{
-    from{transform: rotateX(0);}
-    to{transform: rotateY(180deg);}
 }
 h3{
-    font-size: 2vw;
+    margin-top: 5%;
+    font-size: 1.25vw;
 }
 /*footer*/
 footer{
+    position: relative;
+    z-index: 2;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
     height: 30vh;
     width: 100%;
-    color: black;   
 }
 article{
     width: 65vw;
     font-weight: bold;
-    font-size: 2vw;
+    font-size: 1.25vw;
     font-family: 'Roboto', sans-serif;
     text-align: justify;
 }
