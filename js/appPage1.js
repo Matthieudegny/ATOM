@@ -43,7 +43,7 @@ const app = {
             let response = await fetch (API_URL);
             let data = await response.json();
             if(data){
-                app.useApiData(data) 
+                app.useApiData(data)
             }else{
                 app.problemWithRequest()
                 console.log("problem with request")} 
@@ -63,6 +63,13 @@ const app = {
 
     /*creation of the article*/
     useApiData:function(data) {
+        /*in case there is a video in data*/
+        if(data.media_type === "video") {
+            console.log("ceci est une video")
+            app.picture.innerHTML = `<iframe width="100%" height="100%"
+            src="${data.url}">
+            </iframe>`
+        }
         /*  title from data added*/
         app.title.innerHTML = data.title
         /*rocket added*/
