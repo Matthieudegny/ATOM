@@ -22,14 +22,28 @@ body{
     background-size: 20%; 
     background-position: 51% 50%;   
 } 
-.fa-globe{
+.home-link{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     position: absolute;
-    z-index: 3;
     left: 5%;
     bottom: 40%;
-    font-size: 3vw;
-    cursor: pointer;
+    height: 30%;
+    text-decoration: none;
+    color: #FC3A1B;
+    font-size: 1.5vw;
+    font-weight: bold;
+    z-index: 3;
+
 }
+
+.fa-globe{
+    z-index: 3;
+    cursor: pointer;
+    margin-left: 1%;
+}
+
 .addLogoNasa{
     animation: addLogoNasa 1s 0.5s forwards;
 }
@@ -58,7 +72,7 @@ fill its mission*/
     z-index: 1;
     width: 5vw;
     height: 5vw;
-    background-image: url(/space-shuttle-solid.svg);
+    background-image: url(/images/rocket.svg);
     background-repeat: no-repeat;
     background-size: 80%;
     transform: rotate(-90deg);

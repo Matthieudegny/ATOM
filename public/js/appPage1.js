@@ -109,7 +109,7 @@ const app = {
         app.title.innerHTML = "There is someone?"
         app.rocket.style.display = "block"
         /* img from data added*/
-        app.picture.innerHTML += ` <img src="/houston.jpg" alt="photo astronaut">`
+        app.picture.innerHTML += ` <img src="/public/images/houston.jpg" alt="photo astronaut">`
         app.addH2()
         /*explanation added*/
         app.texteContainor.innerHTML += `<p>This photo seem to be unavailable, please select an other photo.</p>`
