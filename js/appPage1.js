@@ -32,7 +32,7 @@ const app = {
             /*launch request with the date as callback*/
             app.requestActions.sendApiRequestWithDate(date)  
         }); 
-        /*listner to go back at input selection after request is done*/
+        /*listner to go back at input selection after request is done -> reset*/
         app.rocket.addEventListener("click", app.launchRocket)
     },
     
@@ -40,24 +40,34 @@ const app = {
     requestActions: {
         /*first request for the photo of the day*/
         sendApiRequest: async function () {
-            let response = await fetch (API_URL);
-            let data = await response.json();
-            if(data){
-                app.useApiData(data)
-            }else{
+            try{
+                let response = await fetch (API_URL);
+                if(response.status === 200) {
+                    let data = await response.json();
+                    app.useApiData(data)
+                }else{
+                    app.problemWithRequest()
+                }
+            }catch(err){               
                 app.problemWithRequest()
-                console.log("problem with request")} 
+                console.error(err)
+            }
         },
         /*second request is the same than the first one with a request date added,
         the date is receive with the call back from the listener*/
         sendApiRequestWithDate: async function (date){
-            let response = await fetch (API_URL + `&date=${date}`);
-            let data = await response.json();
-            if(data){
-                app.useApiData(data);
-            }else{
+            try{
+                let response = await fetch (API_URL + `&date=${date}`);
+                if(response.status === 200){
+                    let data = await response.json();
+                    app.useApiData(data);
+                }else{
+                    app.problemWithRequest()
+                }
+            }catch(err){
                 app.problemWithRequest()
-                console.log("problem with request")}
+                console.error(err)
+            }
         }
     },
 
@@ -103,6 +113,7 @@ const app = {
         app.addH2()
         /*explanation added*/
         app.texteContainor.innerHTML += `<p>This photo seem to be unavailable, please select an other photo.</p>`
+        console.log("problem with request")
         app.centerPage()
     },
     

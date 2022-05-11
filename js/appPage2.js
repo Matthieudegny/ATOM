@@ -30,38 +30,40 @@ const app2 = {
 
     requestAction2:{
         sendApiRequestInput: async function (API) {
-            let response = await fetch (API);
-            let data = await response.json();
-            if(data){
-                console.log(data)
+            try{
+
+                let response = await fetch (API);
+                if(response.status === 200) {
+                let data = await response.json();
                     if(data.collection.items.length === 0) app2.problemRequest()
                     else{
                         apps.deleteAnimationParticles();
                         app2.useAPIdata2(data);
-                        }
                     }
-            
-            else{
-                console.log("problem with request")} 
+                }
+                else{
+                    console.log("problem with request")} 
+            }catch(err){
+                console.error(err)
+            }
         }
     },
 
-    useAPIdata2:function (data) {
-        for(let i = 0; i < 15; i++){
-
-            fetch(data.collection.items[i].href)
-            .then(res=>{
-                if(res.ok){
-        
-                    res.json().then(data=>{
-                        
+    useAPIdata2:async function (data) {
+        /*i select a max lenght of 12 pictures*/
+        for(let i = 0; i < 12; i++){
+            try{
+                /*after my first request i obtain an other json object, so i add an other request to this second object, and i target directly the images*/
+                let response = await fetch(data.collection.items[i].href)
+                if(response.status === 200){
+                    let data = await response.json();
+                    console.log(data)                                                       
                         for(let image of data){ 
                             if(image.includes("small")) {
                                 let newImage = document.createElement("div");
                                 let newContainerPicture = document.createElement("div");
                                 newImage.classList.add("images");
                                 newContainerPicture.classList.add("container-one-picture");
-                                // newImage.innerHTML = `<img src="${image}" alt="">`
                                 newImage.style.backgroundImage = `url(${image})` 
                                 newContainerPicture.appendChild(newImage)
                                 document.getElementById("container-pictures").appendChild(newContainerPicture)
@@ -69,14 +71,14 @@ const app2 = {
                             }else{
                                 app2.problemRequest
                             }
-
                         }
-                    })
                 }else{
                     console.log(error)
                     app2.problemRequest
                 }
-            })
+            }catch(err){
+                console.error(err)
+            }
         }
     },
 
@@ -86,6 +88,7 @@ const app2 = {
 
     problemRequest: function () {
         window.alert("please write something else")
+        app2.launchRocket()
     },
 
     launchRocket: function () {
@@ -104,7 +107,6 @@ const app2 = {
             document.getElementById("particles-js").style.height = "98%"
             /*put back the NASA logo */
             document.getElementById("particles-js").classList.add("addLogoNasa")
-            console.log("ok")
         }
     },
 

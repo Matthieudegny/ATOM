@@ -72,16 +72,12 @@ a{
     cursor: pointer; 
     transition: 1s;
 }
-.fa-globe:hover{ 
-    transform: scale(1.2);
-}
-
 h3{
     margin-top: 5%;
     font-size: 1.25vw;
     text-align: center;
     font-family: 'Orbitron', sans-serif;
-    text-shadow: 5px 5px 20px #c23d14;
+    text-shadow: 5px 5px 20px #033A92;
 }
 /*footer*/
 footer{
@@ -100,29 +96,12 @@ article{
     font-size: 1.25vw;
     text-align: justify;
 }
+h4{
+    text-shadow: 5px 5px 20px #c23d14;
+}
 #h4-top{
     margin-left: 25%;
 }
 #h4-bottom{
     margin-right: 25%;  
 }
-
-/*
-.fa-globe{
-    font-size: 5vw;
-    cursor: pointer;
-    color: blue;
-    /* animation: animation-globes 3s infinite; */
-/* }
-h3{
-    font-size: 1.5vw;
-}
-footer{
-    height: 15vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.animation-globes{
-   
-} */
