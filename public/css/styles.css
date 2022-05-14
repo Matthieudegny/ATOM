@@ -1,0 +1,105 @@
+/*common style with page1 and page2 + css variables*/
+
+:root{
+    --main-color-nasa-blue: #033A92;
+    --main-color-nasa-red: #FC3A1B;
+    --main-color-nasa-white: #FFFFFF;
+    --main-font-family-nasa: 'Orbitron', sans-serif;
+    --main-font-family-classic: 'Roboto', sans-serif;
+}
+
+*{
+    font-family: var(--main-font-family-nasa);
+}
+body{ 
+    position: relative;
+    background-color: #090b1a; 
+    color: var(--main-color-nasa-white);
+    font-size: 2vw;
+    min-height: 100vh;
+ } 
+/*animation particles same for the two pages*/
+#particles-js{ 
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    height: 99%;
+    width: 100%;
+    background-color: #090b1a; 
+    background-image: url("http://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/NASA_logo.svg/1237px-NASA_logo.svg.png"); 
+    background-repeat: no-repeat; 
+    background-size: 20%; 
+    background-position: 51% 50%;   
+} 
+.home-link{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: absolute;
+    left: 5%;
+    bottom: 40%;
+    height: 30%;
+    text-decoration: none;
+    color: var(--main-color-nasa-red);
+    font-size: 1.5vw;
+    font-weight: bold;
+    z-index: 3;
+}
+/*icon used in the linkk to go home*/
+.fa-globe{
+    z-index: 3;
+    cursor: pointer;
+    margin-left: 1%;
+}
+/*animation to make appear the nasa logo -> JS*/
+.addLogoNasa{
+    animation: addLogoNasa 1s 0.5s forwards;
+}
+@keyframes addLogoNasa {
+    from{background-size: 0%;}
+    to{background-size: 20%;}
+}
+.z-index{
+    z-index: 2;
+}
+/*rocket*/
+/*the img rocket must be absolute to be clicked (relative causes problem with the
+absolute background particles);
+so a relative container is made to contain the absolute rocket and let it
+fill its mission*/
+#container-rocket{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    height: 7vw;
+    width: 100%;
+}
+#img-rocket{
+    display: none;
+    position: absolute;
+    z-index: 1;
+    width: 5vw;
+    height: 5vw;
+    background-image: url(/images/rocket.svg);
+    background-repeat: no-repeat;
+    background-size: 80%;
+    transform: rotate(-90deg);
+    background-position: center;
+    background-color: var(--main-color-nasa-blue);
+    border-radius: 40px;
+    margin-bottom: 20px;
+    cursor:pointer;
+}
+
+/*page 404*/
+#container-picture-404{
+    position: absolute;
+    height: 500px;
+    width: 500px;
+    background-image: url(/images/problem.jpg);
+}
+
+h1{
+   
+}

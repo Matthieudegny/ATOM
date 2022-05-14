@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page1</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron&family=Roboto:wght@100&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/stylePage1.css">
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <header>
+        <a href="http://localhost:3000/home" class="home-link"> <p>H</p> <i class="fa-solid fa-globe"></i> <p>M</p> <p>E</p> </a>
+        
+     
+        <div class="research-type z-index" id="photo-day">
+            <h3>Photo of the day :</h3>
+
+            <input type="date" id="date-today" name="trip-start" value="">
+
+            <button class="button" id="search">SEARCH</button>
+        </div>
+
+        <div class="research-type z-index" id="photos-selected-date">
+            <h3>Select a date :</h3>
+
+            <input type="date" id="date-selected" name="trip-start" value=""min="1995-06-16" max="">
+
+            <button class="button" id="search-date-selected">SEARCH</button>
+
+        </div>
+        
+    </header>
+
+    <div id="main">
+
+            <div id="title-img" class="z-index elements"></div>
+            
+            <div id="container-picture" class="elements"></div>
+            
+            <div id="container-texte" class="z-index elements">
+                <p id="texte-explanation" class="z-index"></p>
+            </div> 
+            
+            <div id="container-rocket">
+                <div id="img-rocket" class="z-index"></div> 
+            </div>
+
+    <div>
+
+    <div id="particles-js"></div>
+
+    <script src="https://kit.fontawesome.com/7bc965e491.js" crossorigin="anonymous"></script>
+    <script src="http://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script> 
+    <script src="http://threejs.org/examples/js/libs/stats.min.js"></script>
+    <script src="/js/appPage1.js"></script>
+    <script src="/js/apps.js"></script>
+    <script src="/js/particles.js"></script>
+
+</body>
+</html>
