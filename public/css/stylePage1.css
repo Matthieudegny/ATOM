@@ -7,6 +7,7 @@ header{
     justify-content: space-evenly;
     align-items: center;
     background-color: transparent;
+    font-family: var(--main-font-family-nasa);
 }
 .research-type{
     display: flex;
@@ -16,8 +17,8 @@ header{
     height: 15vh;
 }
 input{
-    background-color: #033A92;
-    color: rgb(241, 240, 255);
+    background-color: var(--main-color-nasa-blue);
+    color: var(--main-color-nasa-white);
     text-align: center;
     font-size: 1vw;
     height: 2vw;
@@ -26,10 +27,10 @@ input{
     width: 200px;
 }
 ::-webkit-calendar-picker-indicator{
-    background-color: #FC3A1B;
+    background-color: var(--main-color-nasa-red);
     height: 2vw;
     padding-top: 1vw;
-    color: aliceblue;
+    color: var(--main-color-nasa-white);
 }
 #date-selected::-webkit-calendar-picker-indicator{
     cursor:pointer;
@@ -44,7 +45,7 @@ input{
 .button{
     font-size: 0.8vw;
     font-weight: bold;
-    color: #FC3A1B;
+    color: var(--main-color-nasa-red);
     margin: 0 auto;
     border: none;
     border-radius: 3px;
@@ -58,6 +59,7 @@ input{
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    height: 100%;
     width: 100%;
 }
 /*picture part*/
@@ -73,7 +75,7 @@ input{
     justify-content: center;
     align-items: center;
     width: 50vw;
-    height: 0vh;
+    height: 70vh;
 }
 #container-picture img{
     position: absolute;

@@ -1,31 +1,35 @@
 const app2 = {
 
-    objects:{
-        result : document.getElementById("inputResearch"),
-        button : document.getElementById("button"),
-        containerPictures : document.getElementById("container-pictures"),
-        rocket : document.getElementById("img-rocket")
-    },
+    result : document.getElementById("inputResearch"),
+    button : document.getElementById("button"),
+    containerPictures : document.getElementById("container-pictures"),
+    rocket : document.getElementById("img-rocket"),
 
     init:function () {
         app2.listener()
     },
 
     listener: function(){
-        app2.objects.result.addEventListener("click", () => {
-            app2.objects.result.value = ""
+        /*in case the user want write something else in the input (after the first request), 
+        at the click on it, the imput is emptied*/
+        app2.result.addEventListener("click", () => {
+            app2.result.value = ""
         })
 
-        app2.objects.button.addEventListener("click", () => {
-            app2.clearContainerPictures()
-            let {result} = app2.objects
-            result = result.value
-            const API =`https://images-api.nasa.gov/search?q=${result}&media_type=image`
+        /*at the click on the button,
+        -the page is emptied
+        -logo nasa + particles animation are set off
+        -the request is done
+        -rocket is set visible at the bottom of the page*/
+        app2.button.addEventListener("click", () => {
+            app2.clearPage()
+            let resultInput = app2.result.value
+            const API =`https://images-api.nasa.gov/search?q=${resultInput}&media_type=image`
             app2.requestAction2.sendApiRequestInput(API)
         })
 
-         /*listner to go back at input selection after request is done*/
-         app2.objects.rocket.addEventListener("click", app2.launchRocket)
+         /*listner on the rocket -> to go back at input selection after request is done*/
+         app2.rocket.addEventListener("click", app2.rocketLaunch)
     },
 
     requestAction2:{
@@ -53,13 +57,14 @@ const app2 = {
         /*i select a max lenght of 12 pictures*/
         for(let i = 0; i < 12; i++){
             try{
-                /*after my first request i obtain an other json object, so i add an other request to this second object, and i target directly the images*/
+                /*after my first request i obtain an other json object, so i add an other request to this second json object, and i target directly the images*/
                 let response = await fetch(data.collection.items[i].href)
                 if(response.status === 200){
                     let data = await response.json();
                     console.log(data)                                                       
                         for(let image of data){ 
                             if(image.includes("small")) {
+                                /*creation of the elemnts*/
                                 let newImage = document.createElement("div");
                                 let newContainerPicture = document.createElement("div");
                                 newImage.classList.add("images");
@@ -67,7 +72,8 @@ const app2 = {
                                 newImage.style.backgroundImage = `url(${image})` 
                                 newContainerPicture.appendChild(newImage)
                                 document.getElementById("container-pictures").appendChild(newContainerPicture)
-                                app2.objects.rocket.style.display = "block";
+                                /*make appear the rocket, none->block*/
+                                app2.rocket.style.display = "block";
                             }else{
                                 app2.problemRequest
                             }
@@ -82,44 +88,19 @@ const app2 = {
         }
     },
 
-    clearContainerPictures: function() {
-        app2.objects.containerPictures.innerHTML = ""
-    },
 
     problemRequest: function () {
         window.alert("please write something else")
-        app2.launchRocket()
+        app2.rocketLaunch()
     },
 
-    launchRocket: function () {
-        app2.objects.rocket.classList.add("animation-rocket")
-        /*after rockect is launched the screen go back to the form at the top of the page*/
-        setTimeout(timeOut,1000);
-        function timeOut () {
-            document.getElementById("particles-js").scrollIntoView({behavior:"smooth",block:"start"})
-        }
-        setTimeout(rocketDisappear,2300)
-        function rocketDisappear () {
-            app2.objects.rocket.style.opacity = "0"
-            app2.clearPage2()
-            //Reload animation particles + logo nasa 
-            //setting on animation particles
-            document.getElementById("particles-js").style.height = "98%"
-            /*put back the NASA logo */
-            document.getElementById("particles-js").classList.add("addLogoNasa")
-        }
+    rocketLaunch: function(){
+        apps.launchRocket(app2,"particles-js");
     },
 
-    reloadRocket: function () {
-        app2.objects.rocket.style.opacity = "1"
-        app2.objects.rocket.classList.remove("animation-rocket")
-        app2.objects.rocket.style.display = "none"
+    clearPage: function(){
+        apps.clearPage(app2)
     },
-
-    clearPage2: function(){
-        document.getElementById("container-pictures").innerHTML = "";
-        app2.reloadRocket()
-    }
 }
 
 // when the loading is finish i launch app.init

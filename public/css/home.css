@@ -1,9 +1,16 @@
+:root{
+    --main-color-nasa-blue: #033A92;
+    --main-color-nasa-red: #FC3A1B;
+    --main-color-nasa-white: #FFFFFF;
+    --main-font-family-nasa: 'Orbitron', sans-serif;
+    --main-font-family-classic: 'Roboto', sans-serif;
+}
 body{
     position: relative;
     height: 100vh;
     width: 100%;
-    font-family: 'Roboto', sans-serif;
-    color: rgb(255, 254, 254);
+    font-family: var(--main-font-family-classic);
+    color: var(--main-color-nasa-white);
 }
 #particles-js{ 
     position: absolute;
@@ -36,7 +43,7 @@ h1{
     font-size: 3.5vw;
     font-style: italic;
     margin-top: 10%;
-    color: aliceblue;
+    color: var(--main-color-nasa-white);
     font-family: 'Orbitron', sans-serif;
 }
 /*section Right*/
@@ -52,7 +59,7 @@ h2{
     font-size: 1.7vw;
     line-height: 2.3vw;
     text-align: center;
-    text-shadow: 5px 5px 20px #033A92;
+    text-shadow: 5px 5px 20px var(--main-color-nasa-blue);
 }
 #research-links-container{
     display: flex;
@@ -61,7 +68,7 @@ h2{
     width: 100%;
 }
 a{
-    color: white; 
+    color: var(--main-color-nasa-white); 
     width: 100%;
     height: 100%;
 }
@@ -78,8 +85,8 @@ h3{
     margin-top: 5%;
     font-size: 1.75vw;
     text-align: center;
-    font-family: 'Orbitron', sans-serif;
-    text-shadow: 5px 5px 20px #033A92;
+    font-family: var(--main-font-family-nasa);
+    text-shadow: 5px 5px 20px var(--main-color-nasa-blue);
 }
 /*footer*/
 footer{
@@ -99,7 +106,7 @@ article{
     text-align: justify;
 }
 h4{
-    text-shadow: 5px 5px 20px #c23d14;
+    text-shadow: 5px 5px 20px var(--main-color-nasa-red);
 }
 #h4-top{
     margin-left: 25%;

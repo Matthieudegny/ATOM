@@ -1,14 +1,24 @@
+/*common style with page1 and page2 + css variables*/
+
+:root{
+    --main-color-nasa-blue: #033A92;
+    --main-color-nasa-red: #FC3A1B;
+    --main-color-nasa-white: #FFFFFF;
+    --main-font-family-nasa: 'Orbitron', sans-serif;
+    --main-font-family-classic: 'Roboto', sans-serif;
+}
+
 *{
-    font-family: 'Orbitron', sans-serif;
+    font-family: var(--main-font-family-nasa);
 }
 body{ 
     position: relative;
     background-color: #090b1a; 
-    color: aliceblue;
+    color: var(--main-color-nasa-white);
     font-size: 2vw;
     min-height: 100vh;
-    font-family: 'Orbitron', sans-serif;
  } 
+/*animation particles same for the two pages*/
 #particles-js{ 
     position: absolute;
     top: 0;
@@ -31,19 +41,18 @@ body{
     bottom: 40%;
     height: 30%;
     text-decoration: none;
-    color: #FC3A1B;
+    color: var(--main-color-nasa-red);
     font-size: 1.5vw;
     font-weight: bold;
     z-index: 3;
-
 }
-
+/*icon used in the linkk to go home*/
 .fa-globe{
     z-index: 3;
     cursor: pointer;
     margin-left: 1%;
 }
-
+/*animation to make appear the nasa logo -> JS*/
 .addLogoNasa{
     animation: addLogoNasa 1s 0.5s forwards;
 }
@@ -77,10 +86,20 @@ fill its mission*/
     background-size: 80%;
     transform: rotate(-90deg);
     background-position: center;
-    background-color: #033A92;
+    background-color: var(--main-color-nasa-blue);
     border-radius: 40px;
     margin-bottom: 20px;
     cursor:pointer;
 }
 
+/*page 404*/
+#container-picture-404{
+    position: absolute;
+    height: 500px;
+    width: 500px;
+    background-image: url(/images/problem.jpg);
+}
 
+h1{
+   
+}
