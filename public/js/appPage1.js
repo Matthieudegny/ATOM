@@ -23,7 +23,7 @@ const app = {
             /*clear the page in case already one request before*/
             app.clearPage()
             /*launch request*/
-            app.requestActions.sendApiRequest()   
+            requests.photoOfTheDay()   
         });  
         /*listener for the date selected*/
         document.querySelector("#search-date-selected").addEventListener("click", () => {
@@ -31,72 +31,12 @@ const app = {
             /*the value of the date selected in the input is saved*/
             let date = app.dateSelected.value
             /*launch request with the date as callback*/
-            app.requestActions.sendApiRequestWithDate(date)  
+            requests.photoDateSelected(date)  
         }); 
         /*listner to go back at input selection after request is done with rocket animation and then nasa logo + particles animation set on back*/
         app.rocket.addEventListener("click", app.rocketLaunch)
     },
     
-    /*two differents requests for two differents results*/
-    requestActions: {
-        /*first request for the photo of the day*/
-        sendApiRequest: async function () {
-            try{
-                let response = await fetch (API_URL);
-                if(response.status === 200) {
-                    let data = await response.json();
-                    /*particles animation is set off after request*/
-                    apps.deleteAnimationParticles();
-                    app.useApiData(data)
-                }else{
-                    app.problemWithRequest()
-                }
-            }catch(err){               
-                app.problemWithRequest()
-                console.error(err)
-            }
-        },
-        /*second request is the same than the first one with a request date added,
-        the date is received with the call back from the listener*/
-        sendApiRequestWithDate: async function (date){
-            try{
-                let response = await fetch (API_URL + `&date=${date}`);
-                if(response.status === 200){
-                    let data = await response.json();
-                    /*particles animation is set off after request*/
-                    apps.deleteAnimationParticles();
-                    app.useApiData(data);
-                }else{
-                    app.problemWithRequest()
-                }
-            }catch(err){
-                app.problemWithRequest()
-                console.error(err)
-            }
-        }
-    },
-
-    /*creation of the article*/
-    useApiData:function(data) {
-        /*in case there is a video in data*/
-        if(data.media_type === "video") {
-            console.log("ceci est une video")
-            app.picture.innerHTML = `<iframe width="100%" height="100%"
-            src="${data.url}">
-            </iframe>`
-        }
-        /*title from data added*/
-        app.title.innerHTML = data.title
-        /*rocket added*/
-        app.rocket.style.display = "block"
-        /*img from data added*/
-        app.picture.innerHTML += ` <img src="${data.url}" alt="">`
-        app.addH2()
-        /*explanation added*/
-        app.texteContainor.innerHTML += `<p>${data.explanation}</p>`
-        app.centerPage()
-    },
-
     problemWithRequest:function(){
         app.title.innerHTML = "There is someone?"
         app.rocket.style.display = "block"
@@ -153,5 +93,5 @@ const app = {
 
 // when the loading is finish i launch app.init
 document.addEventListener('DOMContentLoaded', app.init );
-console.log(document.querySelectorAll('.elements'))
+
 
