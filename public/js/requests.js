@@ -6,15 +6,12 @@ const requests = {
             let response = await fetch (API_URL);
             if(response.status === 200) {
                 let data = await response.json();
-                /*particles animation is set off after request*/
-                apps.deleteAnimationParticles();
-                domModifications.photoDateSuccess(data);
-                console.log("done")
+                modificationsDom.photoDateSuccess(data);
             }else{
-                app.problemWithRequest()
+                modificationsDom.requestFailed()
             }
         }catch(err){               
-            app.problemWithRequest()
+            modificationsDom.requestFailed()
             console.error(err)
         }
     },
@@ -26,32 +23,33 @@ const requests = {
             if(response.status === 200){
                 let data = await response.json();
                 /*particles animation is set off after request*/
-                apps.deleteAnimationParticles();
                 modificationsDom.photoDateSuccess(data);
             }else{
-                app.problemWithRequest()
+                modificationsDom.requestFailed()
             }
         }catch(err){
-            app.problemWithRequest()
+            modificationsDom.requestFailed()
             console.error(err)
         }
     },
 
-    photosInputResearch:async function (API) {
+    /*request pictures with the input research*/
+    photosInputResearch:async function (API,resultInput) {
         try{
 
             let response = await fetch (API);
             if(response.status === 200) {
             let data = await response.json();
-                if(data.collection.items.length === 0) app2.problemRequest()
+                if(data.collection.items.length === 0) modificationsDom.requestFailed()
                 else{
-                    apps.deleteAnimationParticles();
-                    modificationsDom.photosInputSuccess(data);
+                    modificationsDom.photosInputSuccess(data,resultInput);
                 }
             }
             else{
+                modificationsDom.requestFailed()
                 console.log("problem with request")} 
         }catch(err){
+            modificationsDom.requestFailed()
             console.error(err)
         }
     }
