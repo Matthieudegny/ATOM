@@ -4,7 +4,7 @@ const apps = {
 
     /*all the elements are emptied and the rocket is set as initial*/
     clearPage:function() {
-        modificationsDom.picture.style.minHeight = "40vh";
+        modificationsDom.picture.style.height = "10vh";
         /*in case its not the first request, i clear out everything, to start a new request with an empty page*/ 
         document.querySelectorAll(".elements").forEach(element => {
             element.innerHTML=""

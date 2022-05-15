@@ -11,7 +11,7 @@ const modificationsDom = {
     i use some of those informations to manipulate the DOM*/
     photoDateSuccess:function(data) {
         apps.deleteAnimationParticles();
-        modificationsDom.picture.style.minHeight = "70vh";
+        modificationsDom.picture.style.height = "70vh";
         /*in case there is a video in data*/
         if(data.media_type === "video") {
             console.log("ceci est une video")
@@ -48,7 +48,7 @@ const modificationsDom = {
                             for(let image of data){ 
                                 if(image.includes("small")) {
                                     /*creation of the elemnts*/
-                                    modificationsDom.picture.style.minHeight = "70vh";
+                                    modificationsDom.picture.style.height = "100%";
                                     let newImage = document.createElement("div");
                                     let newContainerPicture = document.createElement("div");
                                     newImage.classList.add("images");

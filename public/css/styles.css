@@ -80,16 +80,19 @@ body{
     padding-top: 2%;
     text-align: center;
 }
+/*same container for all requests*/
 #container-picture{
     position: relative;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    min-width: 50vw;
-    min-height: 40vh;
-    width: 80%;
-    height: 100%;
+    width: 100%;
+}
+/*image for request photo of the day*/
+#container-picture img{
+  max-height: 100%;
+  max-width: 100%;
 }
 /*explanation part*/
 #container-texte{
