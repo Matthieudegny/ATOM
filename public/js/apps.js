@@ -4,12 +4,11 @@ const apps = {
 
     /*all the elements are emptied and the rocket is set as initial*/
     clearPage:function() {
+        modificationsDom.picture.style.minHeight = "40vh";
         /*in case its not the first request, i clear out everything, to start a new request with an empty page*/ 
         document.querySelectorAll(".elements").forEach(element => {
             element.innerHTML=""
         });
-        /*reset setting of the rocket, so block -> none, as it was at the initial page*/
-        apps.reloadRocket()
     },
 
     /*reload rockect means set rockect back as initial, so display none*/
@@ -21,17 +20,21 @@ const apps = {
 
     /*animation at the click on the rocket, it's a scroll top page*/
     launchRocket: function () {
+        /*if the animation is activated on the page2, the input value is emptied*/
+        if(document.getElementById("button")) listeners.result.value = "";
         apps.rocket.classList.add("animation-rocket")
-        /* 1s after rockect is launched the screen go back at the top of the page*/
+        /* 1s after rockect is launched, the screen go back at the top of the page*/
         apps.scrollBackTopPage();
-        /*2.3s after the rocket launched the page is reload*/
+        /*2.3s after the rocket is launched, the page is reload*/
         setTimeout(reloadPage,2300)
         /*reload page means set it at initial,so:
-        -animation particles + logo nasa ON
+        -page empty
         -rocket unvisible
-        -page empty*/
+        -animation particles + logo nasa ON*/
         function reloadPage () {
             apps.clearPage();
+            /*reset setting of the rocket, so block -> none, as it was at the initial page*/
+            apps.reloadRocket()
             //Reload animation particles + logo nasa 
             apps.animationParticlesSetOn();
         }

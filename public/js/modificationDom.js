@@ -11,6 +11,7 @@ const modificationsDom = {
     i use some of those informations to manipulate the DOM*/
     photoDateSuccess:function(data) {
         apps.deleteAnimationParticles();
+        modificationsDom.picture.style.minHeight = "70vh";
         /*in case there is a video in data*/
         if(data.media_type === "video") {
             console.log("ceci est une video")
@@ -43,10 +44,11 @@ const modificationsDom = {
                 let response = await fetch(data.collection.items[i].href)
                 if(response.status === 200){
                     let data = await response.json();   
-                    modificationsDom.title.textContent = `Images corresponding to ${resultInput}`;                                                   
+                    modificationsDom.title.textContent = `Images corresponding to "${resultInput}"`;                                                   
                         for(let image of data){ 
                             if(image.includes("small")) {
                                 /*creation of the elemnts*/
+                                modificationsDom.picture.style.minHeight = "70vh";
                                 let newImage = document.createElement("div");
                                 let newContainerPicture = document.createElement("div");
                                 newImage.classList.add("images");
@@ -54,13 +56,8 @@ const modificationsDom = {
                                 newImage.style.backgroundImage = `url(${image})` 
                                 newContainerPicture.appendChild(newImage)
                                 document.getElementById("container-picture").appendChild(newContainerPicture)
-                                apps.centerPage()
-                                /*make appear the rocket, none->block*/                                
-                                apps.rocket.style.display = "block";
-                                
-                             } //else{
-                            //      modificationsDom.requestFailed()
-                            // }
+                                apps.centerPage()                            
+                             } 
                         }
                 }else{
                     console.log(error)

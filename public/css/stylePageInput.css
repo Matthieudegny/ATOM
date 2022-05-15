@@ -1,3 +1,4 @@
+/*header*/
 header{
     position: relative;
     width: 100%;
@@ -25,11 +26,6 @@ input{
     color: var(--main-color-nasa-red);
     cursor:pointer;
 }
-/* #container-picture{
-    padding-bottom: 200px;
-    width: 100%;
-    height: 100%;  
-} */
 .container-one-picture{
     position: relative;
     height: 60vh;
@@ -44,9 +40,10 @@ input{
     width: 100%;
     background-position: center;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: contain;
     border-radius: 5px;
 }
+/*rocket*/
 .animation-rocket{
     animation: animationRocketPage2 forwards;
     animation-duration: 2.3s;

@@ -1,3 +1,6 @@
+const API_KEY = 'zyfjvcZ14V0Pyci44WYJv9G8yLAGTUEed2wQJI2C'
+const API_URL = `https://api.nasa.gov/planetary/apod?api_key=${API_KEY}`
+
 const requests = {
 
     /*request for the photo of the day*/
