@@ -39,34 +39,39 @@ const modificationsDom = {
     photosInputSuccess:async function (data,resultInput) {
         apps.deleteAnimationParticles();
         /*i select a max lenght of 12 pictures*/
-        for(let i = 0; i < 12; i++){
             try{
-                let response = await fetch(data.collection.items[i].href)
-                if(response.status === 200){
-                    let data = await response.json();   
-                    modificationsDom.title.textContent = `Images corresponding to "${resultInput}"`;                                                   
-                        for(let image of data){ 
-                            if(image.includes("small")) {
-                                /*creation of the elemnts*/
-                                modificationsDom.picture.style.minHeight = "70vh";
-                                let newImage = document.createElement("div");
-                                let newContainerPicture = document.createElement("div");
-                                newImage.classList.add("images");
-                                newContainerPicture.classList.add("container-one-picture");
-                                newImage.style.backgroundImage = `url(${image})` 
-                                newContainerPicture.appendChild(newImage)
-                                document.getElementById("container-picture").appendChild(newContainerPicture)
-                                apps.centerPage()                            
-                             } 
-                        }
-                }else{
-                    console.log(error)
-                    modificationsDom.requestFailed()
+                modificationsDom.title.textContent = `Images corresponding to "${resultInput}"`;
+                for(let i = 0; i < 12; i++){
+                    let response = await fetch(data.collection.items[i].href)
+                    if(response.status === 200){
+                        let data = await response.json();                                                         
+                            for(let image of data){ 
+                                if(image.includes("small")) {
+                                    /*creation of the elemnts*/
+                                    modificationsDom.picture.style.minHeight = "70vh";
+                                    let newImage = document.createElement("div");
+                                    let newContainerPicture = document.createElement("div");
+                                    newImage.classList.add("images");
+                                    newContainerPicture.classList.add("container-one-picture");
+                                    newImage.style.backgroundImage = `url(${image})` 
+                                    newContainerPicture.appendChild(newImage)
+                                    document.getElementById("container-picture").appendChild(newContainerPicture)  
+                                    /*rocket added*/
+                                    modificationsDom.rocket.style.display = "block"
+                                                  
+                                } 
+                            }
+                    }else{
+                        console.log(error)
+                        modificationsDom.requestFailed()
+                    }
+                    /*function centerPage occur only one time*/
+                    if(i===0)apps.centerPage();
                 }
             }catch(err){
-                console.error(err)
+                console.log(err)
+                modificationsDom.requestFailed()
             }
-        }
     },
 
     requestFailed: function(){

@@ -15,7 +15,7 @@ const listeners = {
                 apps.clearPage()
                 let resultInput = listeners.result.value
                 const API =`https://images-api.nasa.gov/search?q=${resultInput}&media_type=image`
-                requests.photosInputResearch(API,resultInput)
+                requests.photosInputResearch(API,resultInput)   
             });
 
              /*in case the user want write something else in the input (after the first request), 
