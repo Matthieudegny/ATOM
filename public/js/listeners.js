@@ -21,7 +21,8 @@ const listeners = {
              /*in case the user want write something else in the input (after the first request), 
             at the click on it, the imput is emptied*/
             listeners.result.addEventListener("click", () => {
-                listeners.result.value = ""
+                listeners.result.value = "",
+                apps.reloadRocket()
             });
         }else{
             /*listeners picture -> date*/

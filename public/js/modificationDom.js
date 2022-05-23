@@ -39,39 +39,61 @@ const modificationsDom = {
     photosInputSuccess:async function (data,resultInput) {
         apps.deleteAnimationParticles();
         /*i select a max lenght of 12 pictures*/
-            try{
-                modificationsDom.title.textContent = `Images corresponding to "${resultInput}"`;
-                for(let i = 0; i < 12; i++){
-                    let response = await fetch(data.collection.items[i].href)
-                    if(response.status === 200){
-                        let data = await response.json();                                                         
-                            for(let image of data){ 
-                                if(image.includes("small")) {
-                                    /*creation of the elemnts*/
-                                    modificationsDom.picture.style.height = "100%";
-                                    let newImage = document.createElement("div");
-                                    let newContainerPicture = document.createElement("div");
-                                    newImage.classList.add("images");
-                                    newContainerPicture.classList.add("container-one-picture");
-                                    newImage.style.backgroundImage = `url(${image})` 
-                                    newContainerPicture.appendChild(newImage)
-                                    document.getElementById("container-picture").appendChild(newContainerPicture)  
-                                    /*rocket added*/
-                                    modificationsDom.rocket.style.display = "block"
-                                                  
-                                } 
-                            }
-                    }else{
-                        console.log(error)
-                        modificationsDom.requestFailed()
-                    }
-                    /*function centerPage occur only one time*/
-                    if(i===0)apps.centerPage();
+        modificationsDom.title.textContent = `Images corresponding to "${resultInput}"`;
+        
+        try{
+            
+            let result = data.collection.items
+
+            for(let i = 0; i < result.length; i++){
+                
+                let response = await fetch(data.collection.items[i].href)
+                
+                let title = data.collection.items[i].data[0].title
+
+                if(response.status === 200){
+                    let data = await response.json();   
+                                                                         
+                        for(let image of data){ 
+                            if(image.includes("small")) {
+                                /*creation of the elemnts*/
+                                modificationsDom.picture.style.height = "100%";
+
+                                let newImage = document.createElement("div");
+                                let newContainerPicture = document.createElement("div");
+                                let newTitle = document.createElement("h3")
+
+                                newImage.classList.add("images");
+                                newContainerPicture.classList.add("container-one-picture");
+
+                                newImage.style.backgroundImage = `url(${image})` 
+                                newTitle.innerText = title
+
+                                newContainerPicture.appendChild(newTitle)
+                                newContainerPicture.appendChild(newImage)
+                                document.getElementById("container-picture").appendChild(newContainerPicture)  
+                                /*rocket added*/
+                                modificationsDom.rocket.style.display = "block"               
+                            } 
+                        }      
+                        
+                }else{
+                    //protection in case there is less than 12 json folders
+                    if(data.collection.items[i] === undefined) continue
                 }
-            }catch(err){
-                console.log(err)
-                modificationsDom.requestFailed()
+
+                /*function centerPage occur only at the first loop*/
+                if(i===0)apps.centerPage();
+
+                console.log(i)
+
+                if(i===11) {break}
             }
+
+        }catch(err){
+            console.log(err)
+            modificationsDom.requestFailed()
+        }
     },
 
     requestFailed: function(){
@@ -80,6 +102,7 @@ const modificationsDom = {
         modificationsDom.rocket.style.display = "block"
         /* img from data added*/
         /*Photo by NASA on Unsplash*/
+        modificationsDom.picture.style.height = "60vh";
         modificationsDom.picture.innerHTML += ` <img src="/images/houston.jpg" alt="photo astronaut">`
         // modificationsDom.addH2()
         apps.addH2();

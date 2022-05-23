@@ -1,5 +1,5 @@
 /*common style with page1 and page2 + css variables*/
-
+@use 'src/colors';
 :root{
     --main-color-nasa-blue: #033A92;
     --main-color-nasa-red: #FC3A1B;

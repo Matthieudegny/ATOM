@@ -49,10 +49,10 @@ const requests = {
                 }
             }
             else{
-                modificationsDom.requestFailed()
+                 modificationsDom.requestFailed()
                 console.log("problem with request")} 
         }catch(err){
-            modificationsDom.requestFailed()
+             modificationsDom.requestFailed()
             console.error(err)
         }
     }
