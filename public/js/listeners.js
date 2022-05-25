@@ -24,13 +24,12 @@ const listeners = {
                 listeners.result.value = "",
                 apps.reloadRocket()
             });
+
         }else{
-            /*listeners picture -> date*/
+
             /*listener for the photo of the day*/
             document.querySelector("#search").addEventListener("click", () => {
-                /*clear the page in case already one request before*/
                 apps.clearPage()
-                /*launch request*/
                 requests.photoOfTheDay()   
             });  
 
@@ -39,12 +38,11 @@ const listeners = {
                 apps.clearPage()
                 /*the value of the date selected in the input is saved*/
                 let date = listeners.dateSelected.value
-                /*launch request with the date as callback*/
                 requests.photoDateSelected(date)  
             }); 
 
              /*setting add to the input date:
-            min date year 1995 (Nase API guidelines) in the css
+            min date year 1995 (Nasa API guidelines) in the css
             max date setted at today
             and the value of the day as placeholder is added*/
             (function modificationValuesInputDate() {

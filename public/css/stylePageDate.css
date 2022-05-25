@@ -15,6 +15,10 @@ header{
     justify-content: space-between;
     align-items: center; 
     height: 15vh;
+    padding-top: 5%;
+}
+h3{
+    text-align: center;
 }
 input{
     background-color: var(--main-color-nasa-blue);
@@ -60,17 +64,34 @@ input{
     animation-duration: 2.3s;
 }
 @keyframes animationRocket {
-    0%{bottom:23px}
-    3%{bottom:17px}
-    6%{bottom:23px}
-    9%{bottom:17px}
-    12%{bottom:23px}
-    15%{bottom:17px}
-    18%{bottom: 23px;}
-    21%{bottom:17px}
-    24%{bottom: 23px;}
+    0%{bottom:0%}
+    3%{bottom:20%}
+    6%{bottom:0%}
+    9%{bottom:20%}
+    12%{bottom:0%}
+    15%{bottom:20%}
+    18%{bottom: 0%;}
+    21%{bottom:20%}
+    24%{bottom: 0%;}
     30%{bottom:250px}
-    100%{bottom:1950px} 
+    100%{bottom:1500%} 
 }
 
 
+@media  screen and (max-width: 950px){
+
+    .research-type{
+        width: 20%;
+    }
+    h3{
+        font-size: 2vw;
+        width: 100%;
+    }
+    input{
+        width: 70%;
+        font-size: 1.5vw;
+    }
+    .button{
+        font-size: 1.5vw;
+    }
+}

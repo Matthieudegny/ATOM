@@ -29,7 +29,7 @@ body{
     background-color: #090b1a; 
     background-image: url("http://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/NASA_logo.svg/1237px-NASA_logo.svg.png"); 
     background-repeat: no-repeat; 
-    background-size: 20%; 
+    background-size: 25%; 
     background-position: 51% 50%;   
 } 
 .home-link{
@@ -39,7 +39,7 @@ body{
     position: absolute;
     left: 5%;
     bottom: 40%;
-    height: 30%;
+    height: 10%;
     text-decoration: none;
     color: var(--main-color-nasa-red);
     font-size: 1.5vw;
@@ -58,7 +58,7 @@ body{
 }
 @keyframes addLogoNasa {
     from{background-size: 0%;}
-    to{background-size: 20%;}
+    to{background-size: 25%;}
 }
 .z-index{
     z-index: 2;
@@ -119,7 +119,8 @@ fill its mission*/
     display: flex;
     justify-content: center;
     height: 7vw;
-    width: 100%;
+    width: 100vw;
+
 }
 #img-rocket{
     display: none;
@@ -136,4 +137,10 @@ fill its mission*/
     border-radius: 40px;
     margin-bottom: 20px;
     cursor:pointer;
+}
+
+@media  screen and (max-width: 950px){
+    #particles-js{ 
+        background-size: 40%;
+    }
 }

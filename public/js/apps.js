@@ -2,10 +2,8 @@ const apps = {
 
     rocket : document.getElementById("img-rocket"),
 
-    /*all the elements are emptied and the rocket is set as initial*/
     clearPage:function() {
         modificationsDom.picture.style.height = "10vh";
-        /*in case its not the first request, i clear out everything, to start a new request with an empty page*/ 
         document.querySelectorAll(".elements").forEach(element => {
             element.innerHTML=""
         });
@@ -23,7 +21,7 @@ const apps = {
         /*if the animation is activated on the page2, the input value is emptied*/
         if(document.getElementById("button")) listeners.result.value = "";
         apps.rocket.classList.add("animation-rocket")
-        /* 1s after rockect is launched, the screen go back at the top of the page*/
+        /* 1s after rockect is launched, the screen go back at the top of the page(following the rocket)*/
         apps.scrollBackTopPage();
         /*2.3s after the rocket is launched, the page is reload*/
         setTimeout(reloadPage,2300)
@@ -48,6 +46,7 @@ const apps = {
     scrollBackTopPage: function (){
         setTimeout(timeOut,1000);
         function timeOut () {
+            /*scroll from the rocket (bottom) to the top of the page*/
             document.querySelector("header").scrollIntoView({behavior:"smooth",block:"start"})
         }
     },
@@ -60,21 +59,17 @@ const apps = {
 
     animationParticlesSetOn: function (){
          //Reload animation particles + logo nasa 
-          //setting on animation particles
           document.getElementById("particles-js").style.height = "98%"
-          /*put back the NASA logo */
           document.getElementById("particles-js").classList.add("addLogoNasa")
     },
 
     deleteAnimationParticles: function(){
         //setting off animation particles
         document.getElementById("particles-js").style.height = "0%"
-        /*remove the NASA logo */
+        /*logo NASA*/
         document.getElementById("particles-js").style.backgroundSize = "0%"
         document.getElementById("particles-js").classList.remove("addLogoNasa")
     },
-
-
 }
 
 
