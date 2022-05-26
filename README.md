@@ -1,6 +1,6 @@
 # ATOM
 
-An application to make you discover some amazing images from the NASA data
+:satellite: An application to make you discover some amazing images from the NASA data
 
 <p align="center">
   <kbd>
@@ -20,6 +20,7 @@ An application to make you discover some amazing images from the NASA data
 
 &nbsp;
 
+:satisfied: 
 
 ## Library
  <a href="https://vincentgarreau.com/particles.js/">A lightweight JavaScript library for creating particles</a>
