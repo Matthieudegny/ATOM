@@ -20,8 +20,6 @@
 
 &nbsp;
 
-:satisfied: 
-
 ## Library
  <a href="https://vincentgarreau.com/particles.js/">A lightweight JavaScript library for creating particles</a>
 
