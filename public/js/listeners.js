@@ -45,7 +45,7 @@ const listeners = {
             min date year 1995 (Nasa API guidelines) in the css
             max date setted at today
             and the value of the day as placeholder is added*/
-            (function modificationValuesInputDate() {
+            function modificationValuesInputDate() {
                 let today = new Date();
                 let dd = today.getDate();
                 let mm = today.getMonth() + 1; //January is 0!
@@ -58,9 +58,12 @@ const listeners = {
                     mm = '0' + mm;} 
 
                 today = yyyy + '-' + mm + '-' + dd;
+                console.log(today)
                 document.getElementById("date-today").setAttribute("value", today);
+               
                 listeners.dateSelected.setAttribute("max", today);
-            })
+            }
+            modificationValuesInputDate()
 
         }
             
@@ -72,3 +75,5 @@ const listeners = {
 
 // when the loading is finish i launch listeners.init
 document.addEventListener('DOMContentLoaded', listeners.init );
+
+console.log(document.getElementById("date-today"))

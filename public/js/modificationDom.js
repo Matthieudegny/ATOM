@@ -8,7 +8,8 @@ const modificationsDom = {
 
     photoDateSuccess:function(data) {
         apps.deleteAnimationParticles();
-        modificationsDom.picture.style.height = "70vh";
+        modificationsDom.picture.style.position= "relative";
+        modificationsDom.picture.style.zIndex = "3";
         /*in case there is a video in data*/
         if(data.media_type === "video") {
             console.log("ceci est une video")
@@ -54,8 +55,9 @@ const modificationsDom = {
                         //the json file contains several pictures, i select the small one
                         for(let image of data){ 
                             if(image.includes("small")) {
-                                
+                                modificationsDom.picture.style.position= "relative";
                                 modificationsDom.picture.style.height = "100%";
+                                modificationsDom.picture.style.zIndex = "3";
 
                                 let newImage = document.createElement("div");
                                 let newContainerPicture = document.createElement("div");

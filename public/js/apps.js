@@ -3,7 +3,8 @@ const apps = {
     rocket : document.getElementById("img-rocket"),
 
     clearPage:function() {
-        modificationsDom.picture.style.height = "10vh";
+        modificationsDom.picture.style.position = "absolute";
+        modificationsDom.picture.style.zIndex = "0";
         document.querySelectorAll(".elements").forEach(element => {
             element.innerHTML=""
         });
