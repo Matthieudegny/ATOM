@@ -174,8 +174,9 @@ fill its mission*/
     }
 
     .home-link{
-        left: 1%;
-        top: 35%;
+        flex-direction: row;
+        left: 44%;
+        top: 15%;
         height: 10%;
         font-size: 3.5vw;
     }
