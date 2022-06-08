@@ -81,7 +81,7 @@ const modificationsDom = {
                 /*function centerPage occur only at the first loop*/
                 if(i===0)apps.centerPage();
 
-                if(i===11) {break}
+                if(i===5) {break}
             }
 
         }catch(err){
