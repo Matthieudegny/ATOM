@@ -18,7 +18,7 @@ body{
     font-size: 2vw;
     min-height: 100vh;
  } 
-/*animation particles same for the two pages*/
+
 #particles-js{ 
     position: absolute;
     top: 0;
@@ -47,7 +47,7 @@ body{
     font-weight: bold;
     z-index: 3;
 }
-/*icon used in the linkk to go home*/
+
 .fa-globe{
     z-index: 3;
     cursor: pointer;
@@ -97,7 +97,7 @@ body{
     height: 60vh;
 
 }
-/*explanation part*/
+
 #container-texte{
     font-family: 'Roboto', sans-serif;
     width: 90%;
@@ -112,11 +112,7 @@ h2{
     margin-top: 1%;
     padding: 2%;
 }
-/*rocket*/
-/*the img rocket must be absolute to be clicked (relative causes problem with the
-absolute background particles);
-so a relative container is made to contain the absolute rocket and let it
-fill its mission*/
+
 #container-rocket{
     position: relative;
     display: flex;
@@ -150,16 +146,10 @@ fill its mission*/
         width: 100%;
     }
 }
-
-
-
 @media  screen and (max-width: 600px){
     #particles-js{ 
         background-size: 45vw; 
-         
     } 
-
-    /*animation to make appear the nasa logo -> JS*/
     .addLogoNasa{
         animation: addLogoNasa 1s 0.5s forwards;
     }
@@ -180,7 +170,6 @@ fill its mission*/
         height: 10%;
         font-size: 3.5vw;
     }
-
     #container-picture{
         position: relative;
         display: flex;
@@ -190,12 +179,9 @@ fill its mission*/
         width: 90%;
         height: 50vh;
     }
-
-    /*image for request photo of the day*/
     #container-picture img{
         width: 100%;
     }
-
     #container-texte{
         font-size: 3.5vw;
         line-height: 150%;
@@ -207,10 +193,8 @@ fill its mission*/
         font-size: 4vw;
         margin-top: 5%;
     }
-
     #container-rocket{
         align-items: center;
         height: 15vw;
-    
     }
 }
