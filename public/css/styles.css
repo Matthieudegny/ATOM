@@ -30,7 +30,7 @@ body{
     background-image: url("http://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/NASA_logo.svg/1237px-NASA_logo.svg.png"); 
     background-repeat: no-repeat; 
     background-size: 25vw; 
-    background-position: 51% 50%;   
+    background-position: 52% 50%;   
 } 
 .home-link{
     display: flex;
@@ -149,6 +149,7 @@ h2{
 @media  screen and (max-width: 600px){
     #particles-js{ 
         background-size: 45vw; 
+        background-position: 55% 50%;   
     } 
     .addLogoNasa{
         animation: addLogoNasa 1s 0.5s forwards;
